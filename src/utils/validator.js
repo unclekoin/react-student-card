@@ -6,6 +6,24 @@ const validator = (data, config) => {
       case 'isRequired':
         if (!data.trim()) return config.message;
         break;
+      case 'isValidName': {
+        const length = data.trim().length;
+        if (length < 3 || length > 20) return config.message;
+        break;
+      }
+      case 'isURL': {
+        const urlRegExp = /^http(s)?:\/\/\S+\.[a-z]+(\/)?$/g;
+        if (!urlRegExp.test(data)) return config.message;
+        break;
+      }
+      case 'isValidYear': {
+        if (
+          Number(data) < 1930 ||
+          Number(data) > new Date(Date.now()).getFullYear()
+        )
+          return config.message;
+        break;
+      }
       default:
         break;
     }
@@ -19,7 +37,7 @@ const validator = (data, config) => {
         config[fieldName][validateMethod]
       );
 
-      if (error) {
+      if (error && !errors[fieldName]) {
         errors[fieldName] = error;
       }
     }

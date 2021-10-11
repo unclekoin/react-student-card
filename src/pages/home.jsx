@@ -5,19 +5,19 @@ import Card from '../components/card';
 
 const Home = () => {
   return (
-    <div className="row m-5">
+    <>
       {!getData() ? (
-        <div>
+        <div className="text-center p-5 shadow bg-body rounded">
           <h1>Student Card</h1>
-          <p>No data available</p>
-          <Link to="create-edit">
-            <button className="btn btn-primary">Add</button>
+          <p className="fs-5">No data available</p>
+          <Link to="/form">
+            <button className="btn btn-outline-primary w-100">Add</button>
           </Link>
         </div>
       ) : (
         <Card />
       )}
-    </div>
+    </>
   );
 };
 

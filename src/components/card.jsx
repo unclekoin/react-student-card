@@ -1,30 +1,31 @@
 import React from 'react';
+import getData from '../utils/storage';
+import getAge from '../utils/getAge';
 import { Link } from 'react-router-dom';
 
 const Card = () => {
+  const { firstName, lastName, yearOfBirth, portfolio } = getData();
+
   return (
-    <div className="card" style={{ width: '50%' }}>
-      <div className="card-body fs-4">
-        <div>
-          <span className="pe-2 fw-bold">First Name:</span>
-          <span>Ivan</span>
-        </div>
-        <div>
-          <span className="pe-2 fw-bold">Last Name:</span>
-          <span>Ivanov</span>
-        </div>
-        <div>
-          <span className="pe-2 fw-bold">Year of Birth:</span>
-          <span>1989 (32 years old)</span>
-        </div>
-        <div className="mb-3">
-          <span className="pe-2 fw-bold">Portfolio:</span>
-          <a href="https://google.com">https://google.com</a>
-        </div>
-        <Link to="create-edit">
-          <button className="btn btn-primary">Edit</button>
-        </Link>
+    <div className="p-5 flex-fill shadow rounded">
+      <h2 className="mb-3">
+      Student Card
+      </h2>
+      <h4 className="mb-3">
+        {firstName} {lastName}
+      </h4>
+      <p>
+        {yearOfBirth} {getAge()}
+      </p>
+      <div className="mb-4">
+        Portfolio:{' '}
+        <a href={portfolio} target="_blank" rel="noreferrer">
+          {portfolio}
+        </a>
       </div>
+      <Link to="/form">
+        <button className="btn btn-outline-primary px-5">Edit</button>
+      </Link>
     </div>
   );
 };

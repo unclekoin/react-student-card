@@ -17,7 +17,7 @@ const TextField = ({
       </label>
       <input
         type={type}
-        className="form-control"
+        className={`form-control${error ? ' is-invalid' : ''}`}
         id={name}
         name={name}
         value={value}
@@ -25,7 +25,11 @@ const TextField = ({
         max={max}
         onChange={onChange}
       />
-      {error && <p>{error}</p>}
+      {error ? (
+        <div className="invalid-feedback">{error}</div>
+      ) : (
+        <div style={{ color: 'transparent' }}>Not error</div>
+      )}
     </div>
   );
 };
