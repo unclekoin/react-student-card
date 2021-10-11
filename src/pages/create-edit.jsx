@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import validator from '../utils/validator';
 import getData from '../utils/storage';
 import TextField from '../components/text-field';
 
@@ -11,51 +12,55 @@ const CreateEdit = () => {
     portfolio: '',
   });
 
-  const [errors, setErrors] = useState();
+  const [errors, setErrors] = useState({});
 
   const handleChange = ({ target }) => {
-    setaData((prevStat) => ({ ...prevStat, [target.name]: target.value }));
+    setaData((prevState) => ({ ...prevState, [target.name]: target.value }));
   };
+
+  const validatorConfig = {
+    firstName: {isRequired: {message: 'First name is required'}},
+    lastName: {isRequired: {message: 'Last name is required'}},
+    yearOfBirth: {isRequired: {message: 'Year of birth is required'}},
+    portfolio: {isRequired: {message: 'Portfolio URL is required'}},
+  }
 
   useEffect(() => {
     validate();
+    // eslint-disable-next-line
   }, [data]);
 
   const validate = () => {
-    const errors = {};
-
-    for (const fieldName in data) {
-      if (data[fieldName].trim()) {
-        errors[fieldName] = `${fieldName} is required`;
-      }
-    }
+    const errors = validator(data, validatorConfig);
 
     setErrors(errors);
-    return Object.keys(errors).length;
+    return !Object.keys(errors).length;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const isValid = validate();
-    localStorage.setItem('student', JSON.stringify(data));
     if (!isValid) return;
+    localStorage.setItem('student', JSON.stringify(data));
+    console.log(data);
   };
-
 
   return (
     <div className="row m-5">
-      <h1 className="mb-3 text-center">{getData ? 'Edit' : 'Create'}</h1>
+      <h1 className="mb-3 text-center">{getData() ? 'Edit' : 'Create'}</h1>
       <form onSubmit={handleSubmit}>
         <TextField
           label="First Name"
           name="firstName"
           value={data.firstName}
+          error={errors.firstName}
           onChange={handleChange}
         />
         <TextField
           label="Last Name"
           name="lastName"
           value={data.lastName}
+          error={errors.lastName}
           onChange={handleChange}
         />
         <TextField
@@ -63,6 +68,7 @@ const CreateEdit = () => {
           type="number"
           name="yearOfBirth"
           value={data.yearOfBirth}
+          error={errors.yearOfBirth}
           min={1930}
           max={2010}
           onChange={handleChange}
@@ -71,6 +77,7 @@ const CreateEdit = () => {
           label="Portfolio"
           name="portfolio"
           value={data.portfolio}
+          error={errors.portfolio}
           onChange={handleChange}
         />
         <button className="btn btn-primary">Create</button>

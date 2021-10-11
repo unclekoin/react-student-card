@@ -1,6 +1,15 @@
 import React from 'react';
 
-const TextField = ({ label, type = "text", name, value, max, min, onChange }) => {
+const TextField = ({
+  label,
+  type = 'text',
+  name,
+  value,
+  error,
+  max,
+  min,
+  onChange,
+}) => {
   return (
     <div className="mb-3">
       <label htmlFor={name} className="form-label">
@@ -16,6 +25,7 @@ const TextField = ({ label, type = "text", name, value, max, min, onChange }) =>
         max={max}
         onChange={onChange}
       />
+      {error && <p>{error}</p>}
     </div>
   );
 };
