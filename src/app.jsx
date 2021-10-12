@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Form from './pages/form';
 import Home from './pages/home';
 
@@ -14,6 +14,7 @@ function App() {
         <Route path="/">
           <Home />
         </Route>
+        <Redirect from="/react-student-card/" to="/" />
       </Switch>
     </div>
   );
