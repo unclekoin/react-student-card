@@ -1,0 +1,2 @@
+.app{min-height:100vh}.modal-window{width:40%;position:absolute;top:-10%;opacity:0;transition:all .3s linear}@media (max-width:768px){.modal-window{width:80%}}@media (max-width:576px){.modal-window{width:90%}}.modal-window.modal-open{opacity:1;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%)}.modal-overlay{position:absolute;display:none;top:0;right:0;left:0;bottom:0;background-color:rgba(0,0,0,.5)}.modal-overlay.overlay-visible{display:block}
+/*# sourceMappingURL=main.b566baec.chunk.css.map */
