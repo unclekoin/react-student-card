@@ -74,8 +74,8 @@ const Form = () => {
       <ModalOverlay visible={modalVisible} />
       <Modal visible={modalVisible} onVisible={handleModal} />
 
-      <div className="flex-fill">
-        <h2 className="mb-3 text-center">{getData() ? 'Edit' : 'Create'}</h2>
+      <div className="row">
+        <h2 className="mb-3 text-center">{getData() ? 'Edit' : 'Create'} Card</h2>
         <form onSubmit={handleSubmit} noValidate>
           <TextField
             label="First Name"
@@ -108,15 +108,13 @@ const Form = () => {
             error={errors.portfolio}
             onChange={handleChange}
           />
-          <div>
-            <Link to="/">
-              <button className="btn btn-outline-secondary flex-grow-0 px-4 me-2 mb-2">
+          <div className="btn-group mt-4">
+            <Link className="btn btn-outline-secondary" to="/">
                 Home
-              </button>
             </Link>
             <button
               onClick={handleModal}
-              className="btn btn-outline-primary px-4 mb-2"
+              className="btn btn-outline-primary"
               disabled={!isValid}
             >
               Create

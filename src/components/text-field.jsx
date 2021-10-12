@@ -11,7 +11,7 @@ const TextField = ({
   onChange,
 }) => {
   return (
-    <div className="mb-3">
+    <div className="mb-1">
       <label htmlFor={name} className="form-label">
         {label}
       </label>

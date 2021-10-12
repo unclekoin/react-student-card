@@ -6,7 +6,7 @@ import Home from './pages/home';
 function App() {
 
   return (
-    <div className="app container d-flex justify-content-center align-items-center text-muted">
+    <div className="app container d-flex align-items-center justify-content-center text-muted pt-5">
       <Switch>
         <Route path="/form">
           <Form />

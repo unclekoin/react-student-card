@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 
 const Modal = ({ visible, onVisible }) => {
   return (
-    <div className={`modal-window flex-fill shadow ${visible ? 'modal-open' : ''}`}>
+    <div className={`modal-window shadow ${visible ? 'modal-open' : ''}`}>
       <div className="modal-content">
-        <div className="modal-body align-items-center justify-content-center">
-          <p className="m-0 lead px-5">Data updated!</p>
+        <div className="modal-body text-center">
+          <p className="mb-0 fs-4">Data updated!</p>
         </div>
         <div className="modal-footer">
           <Link to='/'>

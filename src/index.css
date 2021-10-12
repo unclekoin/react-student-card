@@ -3,7 +3,7 @@
 }
 
 .modal-window {
-  width: 50%;
+  width: 40%;
   position: absolute;
   top: -10%;
   opacity: 0;
@@ -13,6 +13,12 @@
 @media (max-width: 768px) {
   .modal-window {
     width: 80%;
+  } 
+}
+
+@media (max-width: 576px) {
+  .modal-window {
+    width: 90%;
   } 
 }
 
