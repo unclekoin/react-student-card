@@ -9,7 +9,7 @@ const Modal = ({ visible, onVisible }) => {
           <p className="mb-0 fs-4">Data updated!</p>
         </div>
         <div className="modal-footer">
-          <Link to='/'>
+          <Link to='/react-student-card/'>
             <button
               onClick={onVisible}
               type="button"

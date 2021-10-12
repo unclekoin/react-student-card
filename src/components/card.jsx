@@ -22,7 +22,7 @@ const Card = () => {
             {portfolio}
           </a>
         </div>
-        <Link className="btn btn-outline-primary w-100" to="/form">
+        <Link className="btn btn-outline-primary w-100" to="/react-student-card/form">
           Edit
         </Link>
       </div>

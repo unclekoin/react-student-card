@@ -109,7 +109,7 @@ const Form = () => {
             onChange={handleChange}
           />
           <div className="btn-group mt-4">
-            <Link className="btn btn-outline-secondary" to="/">
+            <Link className="btn btn-outline-secondary" to="/react-student-card/">
                 Home
             </Link>
             <button
@@ -117,7 +117,7 @@ const Form = () => {
               className="btn btn-outline-primary"
               disabled={!isValid}
             >
-              Create
+              {getData() ? 'Edit' : 'Create'}
             </button>
           </div>
         </form>
